@@ -1,26 +1,25 @@
 import java.io.*;
 import java.util.*;
-import java.lang.*;
 
 public class schoolsearch {
-
+  public static ArrayList<Student> studentList = new ArrayList<Student>();
+  
 	public static void main (String args[]) {
-        System.out.println("~~~~~~~~~~~~~~~~~~~");
-
-		Scanner scanner = new Scanner(System.in);
-		readFileByLine("students.txt");
+	  
+		Scanner scan = new Scanner(System.in);
+		readFileByLine("src/students.txt");
 
 		String input = "";
-		
+    System.out.println("~~~~~~~~~~~~~~~~~~~");
 		System.out.print("Type an instruction: ");
 		System.out.println("\n");
-		System.out.print("S[tudent]: <lastname> <bus (optional)>");
-    	System.out.println("\n");
+		System.out.print("S[tudent]: <lastname> [B[us]]");
+    System.out.println("\n");
 		System.out.print("T[eacher]: <lastname>");
 		System.out.println("\n");
 		System.out.print("B[us]: <number>");
 		System.out.println("\n");   
-		System.out.print("G[rade]: <number>");
+		System.out.print("G[rade]: <number> [H[igh]] [L[ow]]");
 		System.out.println("\n");
 		System.out.print("A[verage]: <number>");
 		System.out.println("\n");
@@ -29,19 +28,16 @@ public class schoolsearch {
 		System.out.println("Q[uit]");
 
 		//read user input and call associated function
-		while (!input.equals("Q") || !input.equals("Quit")){
-	        input = scanner.nextLine();
-	        String[] inputArr = input.split(" ");
+		while (true){
+	        System.out.println("\n");
 
-	        for (int i = 0; i < inputArr.length; i++) {
-	 			System.out.print("input array: " + inputArr[i]);
-	 			System.out.println();
-    		}
+	        input = scan.nextLine();
+	        String[] inputArr = input.split(" ");
 
 	        switch (inputArr[0]) {
 		        case "S:":
 		       	case "Student:":
-					studentCall(inputArr);
+		       	  studentCall(inputArr);
 			            break;
 		        case "T:":
 		       	case "Teacher:":
@@ -59,12 +55,14 @@ public class schoolsearch {
 		       	case "Average:":
 		        	averageCall(inputArr);
 		            break;
-		        case "I:":
-		       	case "Info:":
+		        case "I":
+		       	case "Info":
 		        	infoCall(inputArr);
 		            break;
-		       	case "Q:":
-		       	case "Quit:":
+		       	case "Q":
+		       	case "Quit":
+		       	  System.out.println("Quitting...");
+		       	  scan.close();
 		      		System.exit(0);
 		      		   break;
 		        default:
@@ -72,21 +70,20 @@ public class schoolsearch {
 		            break;
 	        }
 		}
+
 	}
 
-	//each student will be a row and each column is one piece of student info
-	public static void readFileByLine(String fileName) {
-		String [][] studentInfo = new String [60][8];
-  		try {
+	//initialize each line in file to Student object
+	public static void readFileByLine(String fileName) {		
+  	try {
   			File file = new File(fileName);
    			Scanner scanner = new Scanner(file);
    		
    			for (int k = 0; k < 60; k++) {
     			String line = scanner.next();
     			String [] temp = line.split(",");
-    			for (int i = 0; i < temp.length; i++) {
-    				studentInfo[k] = temp;
-    			}
+          studentList.add(new Student(temp[0], temp[1], (Integer.parseInt(temp[2])), (Integer.parseInt(temp[3])), (Integer.parseInt(temp[4])),
+              (Double.parseDouble(temp[5])), temp[6], temp[7]));
    			}
   			 scanner.close();
  	 	} 
@@ -95,36 +92,80 @@ public class schoolsearch {
   		}
  	}
 
- 	//	Given students last name: find the students grade, classroom, teacher
- 	//	Given students last name AND bus: find the students grade, classroom, teacher
- 	//	if 2 students have the same last name, find info for all
+	// Traceability: implements requirements R4, R5
+  // Given students last name: 
+  //    if bus not given, for each entry found print last name, first name, grade, classroom, teacher last & first name
+  //    if bus route given, for each entry found print last name, first name, bus route
+ 	//    if 2 students have the same last name, find info for all
  	public static void studentCall(String [] inputArr){
- 		ArrayList<String> obj = new ArrayList<String>();
+ 		ArrayList<Student> printList = new ArrayList<Student>();
 
- 		//search for student with given last name
  		for (int i = 0; i < 60; i++) {
- 			if (inputArr[1].equals(studentInfo[i].lastname)) {
-
+ 			if (inputArr[1].equals(studentList.get(i).stLastName)) {
+ 			  printList.add(studentList.get(i));
  			}
  		}
-
- 		//if bus not given, for each entry found print last name, first name, grade, classroom, teacher last & first name
-
- 		//if bus route given, for each entry found print last name, first name, bus route
+ 		
+ 		//printing rules
+ 		if(inputArr.length > 2) {
+   		if (inputArr[2].equals("B") || inputArr[2].equals("Bus")) {
+   		  for (Student stu : printList) {
+   		    System.out.println(stu.stLastName + "," + stu.stFirstName + "," + stu.bus);
+   		  }
+   		}
+ 		} else {
+      for (Student stu : printList) {
+        System.out.println(stu.stLastName + "," + stu.stFirstName + "," + stu.grade  + 
+         "," + stu.classroom  + "," + stu.tLastName  + "," + stu.tFirstName);
+       }
+ 		}
+ 		
+ 		if (printList.size() < 1) { 
+ 		  System.out.println("No students found.");
+ 		}
  	}
 
- 	//given teacher: find list of students in that class
+  // Traceability: implements requirements R6
+ 	// given teacher: find list of students in that class
+  // search for teacher with given last name 
+  // for each entry found, print last and first name of student
  	public static void teacherCall(String [] inputArr){
- 		//search for teacher with given last name 
+ 	 ArrayList<Student> printList = new ArrayList<Student>();
 
- 		//for each entry found, print last and first name of student
+ 	 for (int i = 0; i < 60; i++) {
+     if (inputArr[1].equals(studentList.get(i).tLastName)) {
+       printList.add(studentList.get(i));
+     }
+   }
+   
+   for (Student stu : printList) {
+     System.out.println(stu.stLastName + "," + stu.stFirstName); 
+   }
+   
+   if (printList.size() < 1) { 
+     System.out.println("No students found.");
+   }
 	}
 
-	//given bus route: find all students who take it
+  // Traceability: implements requirements R8
+	// given bus route: find all students who take it
+ 	// for each entry, print student first and last name, grade, classroom 
  	public static void busCall(String [] inputArr){
- 		//search for students who take this bus
+ 	 ArrayList<Student> printList = new ArrayList<Student>();
 
- 		//for each entry, print student first and last name, grade, classroom 
+   for (int i = 0; i < 60; i++) {
+     if (inputArr[1].equals(Integer.toString(studentList.get(i).bus))) {
+       printList.add(studentList.get(i));
+     }
+   }
+   
+   for (Student stu : printList) {
+     System.out.println(stu.stLastName + "," + stu.stFirstName + "," + stu.grade + "," + stu.classroom); 
+   }
+   
+   if (printList.size() < 1) { 
+     System.out.println("No bus found.");
+   }
  	}
 
  	public static void gradeCall(String [] inputArr){
