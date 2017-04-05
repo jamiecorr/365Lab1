@@ -1,36 +1,14 @@
-public static void infoCall(String [] inputArr){
-      int total0, total1, total2, total3, total4, total5, total6;
-      total0 = total1 = total2 = total3 = total4 = total5 = total6 = 0;
+public static void averageCall(String [] inputArr){
+      float averageTotal = 0;
+      int numStudents = 0;
+      float averageGPA = 0;
 
-         for (int i = 0; i < 60; i++) {
-            if ((studentList.get(i).grade).equals(0)) {
-                total0++;
-            }
-            else if ((studentList.get(i).grade).equals(1)) {
-                total1++;
-            }
-            else if ((studentList.get(i).grade).equals(2)) {
-                total2++;
-            }
-            else if ((studentList.get(i).grade).equals(3)) {
-                total3++;
-            }
-            else if ((studentList.get(i).grade).equals(4)) {
-                total4++;
-            }
-            else if ((studentList.get(i).grade).equals(5)) {
-                total5++;
-            }
-            else if ((studentList.get(i).grade).equals(6)) {
-                total6++;
-            }
+      for (int i = 0; i < 60; i++) {
+         if (inputArr[1].equals(Integer.toString(studentList.get(i).grade)) {
+            numStudents++;
+            averageTotal += studentList.get(i).grade;
          }
-
-      System.out.println("0: " + total0);
-      System.out.println("1: " + total1);
-      System.out.println("2: " + total2);
-      System.out.println("3: " + total3);
-      System.out.println("4: " + total4);
-      System.out.println("5: " + total5);
-      System.out.println("6: " + total6);
+      }
+      averageGPA = averageTotal/numStudents;
+      System.out.println("Grade Level: " + inputArr[1] + " Average GPA: " + averageGPA);
    }
