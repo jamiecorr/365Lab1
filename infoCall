@@ -1,14 +1,42 @@
-public static void averageCall(String [] inputArr){
-      float averageTotal = 0;
-      int numStudents = 0;
-      float averageGPA = 0;
+public static void gradeCall(String [] inputArr){
+      float highestGPA = 0;
+      float lowestGPA = 10;
+      int studentNumberHigh = 0;
+      int studentNumberLow = 0;
 
-      for (int i = 0; i < 60; i++) {
-         if (inputArr[1].equals(Integer.toString(studentList.get(i).grade)) {
-            numStudents++;
-            averageTotal += studentList.get(i).grade;
+      //System.out.println("inputArr[2]: " + inputArr[2]);
+      if (inputArr.length == 2) {
+         for (int i = 0; i < 60; i++) {
+            if (inputArr[1].equals(Integer.toString(studentList.get(i).grade)) {
+               System.out.println(studentList.get(i).stFirstName + " " + studentList.get(i).stLastName);
+            }
          }
       }
-      averageGPA = averageTotal/numStudents;
-      System.out.println("Grade Level: " + inputArr[1] + " Average GPA: " + averageGPA);
+      else if (inputArr[2].equals("H") || inputArr[2].equals("High")) {
+         for (int i = 0; i < 60; i++) {
+            if (inputArr[1].equals(Integer.toString(studentList.get(i).grade)) {
+               if (studentList.get(i).GPA > highestGPA) {
+                  highestGPA = studentList.get(i).GPA;
+                  studentNumberHigh = i;
+               }
+            }
+         }
+         System.out.println(studentList.get(studentNumberHigh).stFirstName + " " + studentList.get(studentNumberHigh).stLastName  + ", " + 
+         Integer.toString(studentList.get(studentNumberHigh).GPA)  + ", " + studentList.get(studentNumberHigh).tFirstName  + " " + 
+         studentList.get(studentNumberHigh).tLastName  + ", " + Integer.toString(studentList.get(studentNumberHigh).bus));
+      }
+
+      else if (inputArr[2].equals("L") || inputArr[2].equals("Low")) {
+         for (int i = 0; i < 60; i++) {
+            if (inputArr[1].equals(Integer.toString(studentList.get(i).grade)) {
+               if (studentList.get(i).GPA < lowestGPA) {
+                  lowestGPA = studentList.get(i).GPA;
+                  studentNumberLow = i;
+               }
+            }
+         }
+         System.out.println(studentList.get(studentNumberLow).stFirstName + " " + studentList.get(studentNumberLow).stLastName  + ", " + 
+         Integer.toString(studentList.get(studentNumberLow).GPA)  + ", " + studentList.get(studentNumberLow).tFirstName  + " " + 
+         studentList.get(studentNumberLow).tLastName  + ", " + Integer.toString(studentList.get(studentNumberLow).bus));
+      }
    }
