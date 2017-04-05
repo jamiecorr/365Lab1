@@ -1,0 +1,8 @@
+// CSC 365. Spring 2017
+// Jamie Corr, Arya Karnik
+// Lab 1-1 Test Suite
+
+// TC-1
+// Tests requirements R3, R13
+// quit command
+// expected output: program terminates
