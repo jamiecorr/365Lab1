@@ -1,4 +1,4 @@
-# 365Lab1
+# 365 Lab 1-1
 From the command line, navigate to the directory containing the submitted files.  Run the following commands:
 
 $ javac schoolsearch.java 
