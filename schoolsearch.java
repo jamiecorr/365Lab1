@@ -6,7 +6,7 @@ public class schoolsearch {
   
   // Traceability: implements requirements R1, E1
 	public static void main (String args[]) {
-		readFileByLine("src/students.txt");
+		readFileByLine("students.txt");
 		try {
 		  promptInput();
 		} catch (Exception e) {
