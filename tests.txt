@@ -3,6 +3,194 @@
 // Lab 1-1 Test Suite
 
 // TC-1
-// Tests requirements R3, R13
+// Tests requirements R3, R4
+// short form command name, existing student
+// expected output: GUM,NOAH,4,112,CHIONCHIO,PERLA
+
+S: GUM
+
+// TC-2
+// Tests requirements R4
+// short form command name, non-existing student
+// expected output: No students found.
+
+S: CORR
+
+// TC-3
+// Tests requirements R4
+// long form command name, existing student
+// expected output: GUM,NOAH,4,112,CHIONCHIO,PERLA
+
+Student: GUM
+
+// TC-4
+// Tests requirements R5
+// short form command name, existing student
+// expected output: GUM,NOAH,54
+
+S: GUM B
+
+// TC-5
+// Tests requirements R5
+// long form command name, existing student, bus
+// expected output: GUM,NOAH,54
+
+S: GUM Bus
+
+// TC-6
+// Tests requirements R6
+// short form command name, existing teacher
+// expected output:
+//    SCHOENECKER,PHUONG
+//    CLECKLER,FLOY
+//    KRAKE,VALENTIN
+//    CREMEANS,RANDOLPH
+//    KREESE,CARRIE
+
+T: GAMBREL
+
+// TC-7
+// Tests requirements R6
+// short form command name, non-existing teacher
+// expected output: No students found.
+
+T: DIAZ
+
+// TC-8
+// Tests requirements R6
+// long form command name, existing teacher
+// expected output:
+//    SCHOENECKER,PHUONG
+//    CLECKLER,FLOY
+//    KRAKE,VALENTIN
+//    CREMEANS,RANDOLPH
+//    KREESE,CARRIE
+
+Teacher: GAMBREL
+
+// TC-9
+// Tests requirements R8
+// short form command name, existing bus route
+// expected output: 
+//    OGAS,ERVIN,4,105
+//    GUICE,CODI,4,112
+//    BREVO,JANNETTE,6,111
+//    VANCOTT,MIKE,2,108
+//    GLOR,HUNG,4,112
+//    SAELEE,DANILO,1,103
+//    GUM,NOAH,4,112
+//    BERBES,DICK,2,108
+//    MULGREW,RANDELL,2,108
+//    NOVICK,ROLLAND,4,112
+//    THEUNISSEN,GRACE,3,110
+//    TOWLEY,LANE,2,108
+
+B: 54
+
+// TC-10
+// Tests requirements R8
+// short form command name, non-existing bus route
+// expected output: No bus found.
+
+B: 354
+
+// TC-11
+// Tests requirements R8
+// long form command name, existing bus route
+// expected output: 
+//    OGAS,ERVIN,4,105
+//    GUICE,CODI,4,112
+//    BREVO,JANNETTE,6,111
+//    VANCOTT,MIKE,2,108
+//    GLOR,HUNG,4,112
+//    SAELEE,DANILO,1,103
+//    GUM,NOAH,4,112
+//    BERBES,DICK,2,108
+//    MULGREW,RANDELL,2,108
+//    NOVICK,ROLLAND,4,112
+//    THEUNISSEN,GRACE,3,110
+//    TOWLEY,LANE,2,108
+
+Bus: 54
+
+// TC-12
+// Tests requirements R7, R9
+// short form command name, valid grade level
+// expected output:
+//    XUAN,COOKUS
+//    SHANTE,ELHADDAD
+//    HYE,BRODERSEN
+//    SHARRI,SWEDLUND
+//    MANIE,CIGANEK
+//    TOMAS,COVINGTON
+//    TORY,EARLY
+//    LELA,LINHART
+//    GRACE,THEUNISSEN
+
+G: 3
+
+// TC-13
+// Tests requirements R7, R9
+// long form command name, valid grade level
+// expected output: XUAN,COOKUS
+//    SHANTE,ELHADDAD
+//    HYE,BRODERSEN
+//    SHARRI,SWEDLUND
+//    MANIE,CIGANEK
+//    TOMAS,COVINGTON
+//    TORY,EARLY
+//    LELA,LINHART
+//    GRACE,THEUNISSEN
+
+Grade: 3 
+
+// TC-14
+// Tests requirements R7, R9
+// short form command name, valid grade level, high keyword
+// expected output: SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+
+G: 3 H
+
+// TC-15
+// Tests requirements R7, R9
+// short form command name, valid grade level, low keyword
+// expected output: MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
+
+G: 3 L
+
+// TC-16
+// Tests requirements R10
+// short form command name, valid grade level
+// expected output: 2 2.94
+
+A: 2
+
+// TC-17
+// Tests requirements R10
+// long form command name, valid grade level
+// expected output: 2 2.94
+
+Average: 2
+
+// TC-18
+// Tests requirements R11
+// short form command name
+// expected output: 
+//    0: 0
+//    1: 2
+//    2: 13
+//    3: 9
+//    4: 15
+//    5: 0
+//    6: 21
+
+I
+
+// TC-19
+// Tests requirements R3, R12
 // quit command
 // expected output: program terminates
+
+Q
+
+
