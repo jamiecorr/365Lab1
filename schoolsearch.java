@@ -9,8 +9,9 @@ public class schoolsearch {
   
   // Traceability: implements requirements R1, E1
 	public static void main (String args[]) {
-		readFileByLine("src/list.csv");
-    readFileByLine("src/teachers.csv");
+		readFileByLine("list.csv");
+    		readFileByLine("teachers.csv");
+		readFileByLine("students.txt");	
 
 //		try {
 		  promptInput();
