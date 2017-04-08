@@ -1,19 +1,55 @@
+Script started on Fri Apr  7 18:01:45 2017
+[?1034hbash-3.2$ java schoolsearch
+
+Type an instruction: 
+ S[tudent]: <lastname> [B[us]] 
+ T[eacher]: <lastname> 
+ B[us]: <number> 
+ G[rade]: <number> [H[igh]] [L[ow]] 
+ A[verage]: <number> 
+ I[nfo] 
+ Q[uit]
+
+
+$ S: GUM
 GUM,NOAH,4,112,CHIONCHIO,PERLA
+
+$ S: CORR
 No students found.
+
+$ Student: GUM
 GUM,NOAH,4,112,CHIONCHIO,PERLA
+
+$ Student: GUM B
 GUM,NOAH,54
+
+$ Student: GUM Bus
 GUM,NOAH,54
+
+$ S: GUM B
+GUM,NOAH,54
+
+$ S: GUM Bus
+GUM,NOAH,54
+
+$ T: GAMBREL
 SCHOENECKER,PHUONG
 CLECKLER,FLOY
 KRAKE,VALENTIN
 CREMEANS,RANDOLPH
 KREESE,CARRIE
+
+$ T: DIAZ
 No students found.
+
+$ Teacher: GAMBREL
 SCHOENECKER,PHUONG
 CLECKLER,FLOY
 KRAKE,VALENTIN
 CREMEANS,RANDOLPH
 KREESE,CARRIE
+
+$ B: 54
 OGAS,ERVIN,4,105
 GUICE,CODI,4,112
 BREVO,JANNETTE,6,111
@@ -26,7 +62,11 @@ MULGREW,RANDELL,2,108
 NOVICK,ROLLAND,4,112
 THEUNISSEN,GRACE,3,110
 TOWLEY,LANE,2,108
+
+$ B: 354
 No bus found.
+
+$ Bus: 54
 OGAS,ERVIN,4,105
 GUICE,CODI,4,112
 BREVO,JANNETTE,6,111
@@ -39,6 +79,8 @@ MULGREW,RANDELL,2,108
 NOVICK,ROLLAND,4,112
 THEUNISSEN,GRACE,3,110
 TOWLEY,LANE,2,108
+
+$ G: 3
 XUAN,COOKUS
 SHANTE,ELHADDAD
 HYE,BRODERSEN
@@ -48,18 +90,61 @@ TOMAS,COVINGTON
 TORY,EARLY
 LELA,LINHART
 GRACE,THEUNISSEN
-XUAN,COOKUS
-SHANTE,ELHADDAD
-HYE,BRODERSEN
-SHARRI,SWEDLUND
-MANIE,CIGANEK
-TOMAS,COVINGTON
-TORY,EARLY
-LELA,LINHART
-GRACE,THEUNISSEN
+
+$ G: 3 H
 SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+
+$ G: 3 L
 MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
+
+$ G: 3 High
+SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+
+$ Grade: 3 H
+SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+
+$ Grade: 3 High
+SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+
+$ G: 3 Low
+MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
+
+$ Grade: 3 L
+MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
+
+$ Grade: 3 Low
+MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
+
+$ Grade: 3
+XUAN,COOKUS
+SHANTE,ELHADDAD
+HYE,BRODERSEN
+SHARRI,SWEDLUND
+MANIE,CIGANEK
+TOMAS,COVINGTON
+TORY,EARLY
+LELA,LINHART
+GRACE,THEUNISSEN
+
+$ G: 10
+
+$ A: 2
 2 2.94
+
+$ A: 8
+Invalid selection
+
+$ Type an instruction: 
+ S[tudent]: <lastname> [B[us]] 
+ T[eacher]: <lastname> 
+ B[us]: <number> 
+ G[rade]: <number> [H[igh]] [L[ow]] 
+ A[verage]: <number> 
+ I[nfo] 
+ Q[uit]
+
+
+$ I
 0: 0
 1: 2
 2: 13
@@ -67,3 +152,33 @@ MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
 4: 15
 5: 0
 6: 21
+
+$ Info
+0: 0
+1: 2
+2: 13
+3: 9
+4: 15
+5: 0
+6: 21
+
+$ Q
+Quitting...
+bash-3.2$ java schoolsearch
+
+Type an instruction: 
+ S[tudent]: <lastname> [B[us]] 
+ T[eacher]: <lastname> 
+ B[us]: <number> 
+ G[rade]: <number> [H[igh]] [L[ow]] 
+ A[verage]: <number> 
+ I[nfo] 
+ Q[uit]
+
+
+$ Quit
+Quitting...
+bash-3.2$ exit
+exit
+
+Script done on Fri Apr  7 18:05:40 2017
