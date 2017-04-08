@@ -3,16 +3,23 @@ import java.util.*;
 
 public class schoolsearch {
   public static ArrayList<Student> studentList = new ArrayList<Student>(); 
+  public static ArrayList<Teacher> teacherList = new ArrayList<Teacher>(); 
+  public static ArrayList<Integer> roomList = new ArrayList<Integer>(); 
+
   
   // Traceability: implements requirements R1, E1
 	public static void main (String args[]) {
-		readFileByLine("students.txt");
-		try {
+		readFileByLine("src/list.csv");
+    readFileByLine("src/teachers.csv");
+
+//		try {
 		  promptInput();
-		} catch (Exception e) {
-      System.out.println("Invalid selection");
-      promptInput();
-		}
+//		} catch (Exception e) {
+//      System.out.println("Invalid selection");
+//      promptInput();
+//		}
+		  
+		  
 	}
 	
   // Traceability: implements requirements R1, R2, R3, R12, E1
@@ -21,12 +28,11 @@ public class schoolsearch {
     Scanner scan = new Scanner(System.in);
 
     String input = "";
-    String prompt = "Type an instruction: \n S[tudent]: <lastname> [B[us]] \n T[eacher]: <lastname> \n B[us]: "
-        + "<number> \n G[rade]: <number> [H[igh]] [L[ow]] \n A[verage]: <number> \n I[nfo] \n Q[uit]";
-	  
+    String prompt = "Type an instruction: \n S[tudent]: <lastname> [B[us]] \n T[eacher]: <lastname> \n TeachersInGrade: <number> \n B[us]: "
+        + "<number> \n G[rade]: <number> [H[igh]] [L[ow]] \n A[verage]: <number> \n I[nfo] \n E[nrollment] \n Q[uit]";
+    System.out.println("\n" + prompt + "\n");
     while (true){
-          System.out.println("\n" + prompt + "\n");
-
+        System.out.print("\n");
           input = scan.nextLine();
           String[] inputArr = input.split(" ");
 
@@ -47,13 +53,20 @@ public class schoolsearch {
             case "Grade:":
               gradeCall(inputArr);
                 break;
+            case "TeachersInGrade:":
+              teachersInGrade(inputArr);
+                break;
             case "A:":
             case "Average:":
               averageCall(inputArr);
                 break;
             case "I":
             case "Info":
-              infoCall(inputArr);
+              infoCall();
+                break;
+            case "E":
+            case "Enrollment":
+              allStudentsByRoom();
                 break;
             case "Q":
             case "Quit":
@@ -75,11 +88,30 @@ public class schoolsearch {
   			File file = new File(fileName);
    			Scanner scanner = new Scanner(file);
    		
-   			for (int k = 0; k < 60; k++) {
-    			String line = scanner.next();
-    			String [] temp = line.split(",");
-          studentList.add(new Student(temp[0], temp[1], (Integer.parseInt(temp[2])), (Integer.parseInt(temp[3])), (Integer.parseInt(temp[4])),
-              (Double.parseDouble(temp[5])), temp[6], temp[7]));
+   			if (fileName.equals("src/student.txt")) {
+     			for (int k = 0; k < 60; k++) {
+      			String line = scanner.next();
+      			String [] temp = line.split(",");
+            studentList.add(new Student(temp[0], temp[1], (Integer.parseInt(temp[2])), (Integer.parseInt(temp[3])), (Integer.parseInt(temp[4])),
+                (Double.parseDouble(temp[5])), temp[6], temp[7]));
+     			}
+   			} else if (fileName.equals("src/list.csv")) {
+   			 String line = scanner.nextLine();
+         for (int k = 0; k < 60; k++) {
+           line = scanner.nextLine();
+           String [] temp = line.split(",");
+           studentList.add(new Student(temp[0], temp[1], (Integer.parseInt(temp[2].trim())),(Integer.parseInt(temp[3].trim())),0,0,"",""));
+         }
+   			} else if (fileName.equals("src/teachers.csv")) {
+          String line = scanner.nextLine();
+   			 for (int k = 0; k < 12; k++) {
+           line = scanner.nextLine();
+           String [] temp = line.split(",");
+           teacherList.add(new Teacher(temp[0], temp[1], (Integer.parseInt(temp[2].trim()))));
+           if (!roomList.contains(teacherList.get(k).classroom)) {
+             roomList.add(teacherList.get(k).classroom);
+           }
+          }
    			}
   			 scanner.close();
  	 	} 
@@ -225,7 +257,7 @@ public class schoolsearch {
 
  	// Traceability: implements requirements R11
  	// for each grade, print number of students in that grade
- 	public static void infoCall(String [] inputArr){
+ 	public static void infoCall(){
     int total0, total1, total2, total3, total4, total5, total6;
     total0 = total1 = total2 = total3 = total4 = total5 = total6 = 0;
 
@@ -261,4 +293,68 @@ public class schoolsearch {
     System.out.println("5: " + total5);
     System.out.println("6: " + total6);
  	}
+ 	
+  // Traceability: implements requirements NR1
+ 	// given classroom, list all students in that room
+  public static void studentsInRoom(String [] inputArr){
+  }
+  
+  // Traceability: implements requirements NR2
+  // given classroom, list all teachers in that room
+  public static void teachersInRoom(String [] inputArr){
+  }
+  
+  // Traceability: implements requirements NR3
+  // given grade, list all teachers in that grade
+  public static void teachersInGrade(String [] inputArr){
+    ArrayList<Integer> tempRoomList = new ArrayList<Integer>();
+    ArrayList<Teacher> printList = new ArrayList<Teacher>();
+
+    for (int i = 0; i < 60; i++) {
+      if (inputArr[1].equals(Integer.toString(studentList.get(i).grade).trim())) {
+        tempRoomList.add(studentList.get(i).classroom);
+      }
+    }
+    
+    for (int i = 0; i < tempRoomList.size(); i++) {
+      for (int j = 0; j < teacherList.size(); j++) {
+        if (tempRoomList.get(i) == teacherList.get(j).classroom && !printList.contains(teacherList.get(j))) {
+          printList.add(teacherList.get(j));
+        }
+      }
+    }
+    
+    if (printList.size() < 1) { 
+      System.out.println("Not found.");
+    } else {
+      for (Teacher tea : printList) {
+        System.out.println(tea.tLastName + "," + tea.tFirstName); 
+      }
+    }
+  }
+  
+  // Traceability: implements requirements NR4
+  // output number of students for each classroom
+  public static void allStudentsByRoom(){
+    int[] totals = new int[11];
+    
+    //for each room, add a corresponding total and increment when a student matches with that room
+    for (int x = 0; x < roomList.size(); x++) {
+      for (int i = 0; i < 60; i++) {
+        if (roomList.get(x) == studentList.get(i).classroom) {
+          totals[x]++;
+        }
+      }
+    }
+
+    for (int i = 0; i < roomList.size(); i++) {
+      System.out.println(roomList.get(i) + ": " + totals[i]); 
+    }
+  }
+  
+  // Traceability: implements requirements NR5
+  //output number of students in each classroom
+  public static void newMethodNR5(String [] inputArr){
+  }
+  
 }
