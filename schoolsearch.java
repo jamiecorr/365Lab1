@@ -3,15 +3,16 @@ import java.util.*;
 
 public class schoolsearch {
   public static ArrayList<Student> studentList = new ArrayList<Student>(); 
+  public static ArrayList<Student> newStudentList = new ArrayList<Student>(); 
   public static ArrayList<Teacher> teacherList = new ArrayList<Teacher>(); 
   public static ArrayList<Integer> roomList = new ArrayList<Integer>(); 
 
   
   // Traceability: implements requirements R1, E1
 	public static void main (String args[]) {
-		readFileByLine("list.csv");
-    		readFileByLine("teachers.csv");
-		readFileByLine("students.txt");	
+		readFileByLine("src/list.csv");
+    readFileByLine("src/teachers.csv");
+    readFileByLine("src/students.txt"); 
 
 //		try {
 		  promptInput();
@@ -89,7 +90,7 @@ public class schoolsearch {
   			File file = new File(fileName);
    			Scanner scanner = new Scanner(file);
    		
-   			if (fileName.equals("src/student.txt")) {
+   			if (fileName.equals("src/students.txt")) {
      			for (int k = 0; k < 60; k++) {
       			String line = scanner.next();
       			String [] temp = line.split(",");
@@ -101,7 +102,7 @@ public class schoolsearch {
          for (int k = 0; k < 60; k++) {
            line = scanner.nextLine();
            String [] temp = line.split(",");
-           studentList.add(new Student(temp[0], temp[1], (Integer.parseInt(temp[2].trim())),(Integer.parseInt(temp[3].trim())),0,0,"",""));
+           newStudentList.add(new Student(temp[0], temp[1], (Integer.parseInt(temp[2].trim())),(Integer.parseInt(temp[3].trim())),0,0,"",""));
          }
    			} else if (fileName.equals("src/teachers.csv")) {
           String line = scanner.nextLine();
@@ -312,8 +313,8 @@ public class schoolsearch {
     ArrayList<Teacher> printList = new ArrayList<Teacher>();
 
     for (int i = 0; i < 60; i++) {
-      if (inputArr[1].equals(Integer.toString(studentList.get(i).grade).trim())) {
-        tempRoomList.add(studentList.get(i).classroom);
+      if (inputArr[1].equals(Integer.toString(newStudentList.get(i).grade).trim())) {
+        tempRoomList.add(newStudentList.get(i).classroom);
       }
     }
     
@@ -337,12 +338,12 @@ public class schoolsearch {
   // Traceability: implements requirements NR4
   // output number of students for each classroom
   public static void allStudentsByRoom(){
-    int[] totals = new int[11];
+    int[] totals = new int[12];
     
     //for each room, add a corresponding total and increment when a student matches with that room
     for (int x = 0; x < roomList.size(); x++) {
       for (int i = 0; i < 60; i++) {
-        if (roomList.get(x) == studentList.get(i).classroom) {
+        if (roomList.get(x) == newStudentList.get(i).classroom) {
           totals[x]++;
         }
       }
