@@ -24,20 +24,34 @@ S: CORR
 Student: GUM
 
 // TC-4
+// Tests requirements R4
+// long form command name, existing student, bus short form
+// expected output: GUM,NOAH,54
+
+Student: GUM B
+
+// TC-5
+// Tests requirements R4
+// long form command name, existing student, bus long form
+// expected output: GUM,NOAH,54
+
+Student: GUM Bus
+
+// TC-6
 // Tests requirements R5
-// short form command name, existing student
+// short form command name, existing student, bus short form
 // expected output: GUM,NOAH,54
 
 S: GUM B
 
-// TC-5
+// TC-7
 // Tests requirements R5
-// long form command name, existing student, bus
+// short form command name, existing student, bus long form
 // expected output: GUM,NOAH,54
 
 S: GUM Bus
 
-// TC-6
+// TC-8
 // Tests requirements R6
 // short form command name, existing teacher
 // expected output:
@@ -49,14 +63,14 @@ S: GUM Bus
 
 T: GAMBREL
 
-// TC-7
+// TC-9
 // Tests requirements R6
 // short form command name, non-existing teacher
 // expected output: No students found.
 
 T: DIAZ
 
-// TC-8
+// TC-10
 // Tests requirements R6
 // long form command name, existing teacher
 // expected output:
@@ -68,7 +82,7 @@ T: DIAZ
 
 Teacher: GAMBREL
 
-// TC-9
+// TC-11
 // Tests requirements R8
 // short form command name, existing bus route
 // expected output: 
@@ -87,14 +101,14 @@ Teacher: GAMBREL
 
 B: 54
 
-// TC-10
+// TC-12
 // Tests requirements R8
 // short form command name, non-existing bus route
 // expected output: No bus found.
 
 B: 354
 
-// TC-11
+// TC-13
 // Tests requirements R8
 // long form command name, existing bus route
 // expected output: 
@@ -113,7 +127,7 @@ B: 354
 
 Bus: 54
 
-// TC-12
+// TC-14
 // Tests requirements R7, R9
 // short form command name, valid grade level
 // expected output:
@@ -129,10 +143,67 @@ Bus: 54
 
 G: 3
 
-// TC-13
+// TC-15
+// Tests requirements R7, R9
+// short form command name, valid grade level, High short from
+// expected output: SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+
+G: 3 H
+
+
+// TC-16
+// Tests requirements R7, R9
+// short form command name, valid grade level, Low short from
+// expected output: MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
+
+G: 3 L
+
+// TC-17
+// Tests requirements R7, R9
+// short form command name, valid grade level, High long form
+// expected output: SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+
+G: 3 High
+
+// TC-18
+// Tests requirements R7, R9
+// long form command name, valid grade level, H short from
+// expected output: SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+
+Grade: 3 H
+
+// TC-19
+// Tests requirements R7, R9
+// long form command name, valid grade level, High long form
+// expected output: SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+
+Grade: 3 High
+
+// TC-20
+// Tests requirements R7, R9
+// short form command name, valid grade level, Low long form
+// expected output: MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
+
+G: 3 Low
+
+// TC-21
+// Tests requirements R7, R9
+// long form command name, valid grade level, Low short form
+// expected output: MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
+
+Grade: 3 L
+
+// TC-22
+// Tests requirements R7, R9
+// long form command name, valid grade level, Low long form
+// expected output: MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
+Grade: 3 Low
+
+// TC-23
 // Tests requirements R7, R9
 // long form command name, valid grade level
-// expected output: XUAN,COOKUS
+// expected output: 
+//    XUAN,COOKUS
 //    SHANTE,ELHADDAD
 //    HYE,BRODERSEN
 //    SHARRI,SWEDLUND
@@ -144,35 +215,35 @@ G: 3
 
 Grade: 3 
 
-// TC-14
+// TC-24
 // Tests requirements R7, R9
-// short form command name, valid grade level, high keyword
-// expected output: SHARRI,SWEDLUND,3.24,ROCIO,FAFARD,55
+// short form command name, nonexistent grade level
+// expected output: Empty line.
 
-G: 3 H
+G: 10
 
-// TC-15
-// Tests requirements R7, R9
-// short form command name, valid grade level, low keyword
-// expected output: MANIE,CIGANEK,2.79,ROCIO,FAFARD,53
-
-G: 3 L
-
-// TC-16
+// TC-25
 // Tests requirements R10
 // short form command name, valid grade level
 // expected output: 2 2.94
 
 A: 2
 
-// TC-17
+// TC-26
+// Tests requirements R10
+// short form command name, invalid grade level
+// expected output: Invalid grade level.
+
+A: 8
+
+// TC-27
 // Tests requirements R10
 // long form command name, valid grade level
 // expected output: 2 2.94
 
 Average: 2
 
-// TC-18
+// TC-28
 // Tests requirements R11
 // short form command name
 // expected output: 
@@ -186,11 +257,32 @@ Average: 2
 
 I
 
-// TC-19
+// TC-29
+// Tests requirements R11
+// long form, info command name
+// expected output: 
+//    0: 0
+//    1: 2
+//    2: 13
+//    3: 9
+//    4: 15
+//    5: 0
+//    6: 21
+
+Info
+
+// TC-30
 // Tests requirements R3, R12
-// quit command
+// short from, quit command
 // expected output: program terminates
 
 Q
+
+// TC-31
+// Tests requirements R3, R12
+// long form, quit command
+// expected output: program terminates
+
+Quit
 
 
