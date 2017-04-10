@@ -8,7 +8,7 @@ $ java schoolsearch
 
 Follow the prompt by typing inputs such as "TeachersInGrade: 5" or "E".  To quit the program, type "Q". No clean up required.
 
-#New commands: 
+New commands: 
 
 // given classroom, list all students in that room
 StudentsInClassroom: number
