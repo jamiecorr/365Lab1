@@ -8,29 +8,23 @@ $ java schoolsearch
 
 Follow the prompt by typing inputs such as "TeachersInGrade: 5" or "E".  To quit the program, type "Q". No clean up required.
 
-*New commands: 
+#New commands: 
 
 // given classroom, list all students in that room
-
-*StudentsInClassroom: number
+StudentsInClassroom: number
 
 // given classroom, list all teachers in that room
-
-*TeachersInClassroom: number
-
+TeachersInClassroom: number
 
 // given grade, list all teachers in that grade
-
-*TeachersInGrade: number
+TeachersInGrade: number
 
 // output number of students for each classroom
-
-*E[nrollment]
+E[nrollment]
 
 // If the user chose to analyze student GPAs based on:
 //    Grade: print the student's names and GPAs sorted by their grade
 //    Teacher: print the student's names and GPAs sorted by their teachers
 //    Bus Route: print the student's names and GPAs sorted by their bus route
-
-*Data: grade or teacher or bus
+Data: grade or teacher or bus
 
