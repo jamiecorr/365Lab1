@@ -11,20 +11,25 @@ Follow the prompt by typing inputs such as "TeachersInGrade: 5" or "E".  To quit
 New commands: 
 
 // given classroom, list all students in that room
+
 StudentsInClassroom: number
 
 // given classroom, list all teachers in that room
+
 TeachersInClassroom: number
 
 // given grade, list all teachers in that grade
+
 TeachersInGrade: number
 
 // output number of students for each classroom
+
 E[nrollment]
 
 // If the user chose to analyze student GPAs based on:
 //    Grade: print the student's names and GPAs sorted by their grade
 //    Teacher: print the student's names and GPAs sorted by their teachers
 //    Bus Route: print the student's names and GPAs sorted by their bus route
+
 Data: grade or teacher or bus
 
